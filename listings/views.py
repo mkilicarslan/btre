@@ -4,7 +4,8 @@ from .models import Listing
 
 
 def index(request):
-    listings = Listing.objects.order_by('-list_date').filter(is_published=True)
+    listings = Listing.objects.order_by(
+        '-list_date').filter(is_published=True)[:6]
     # listings = Listing.objects.all()
 
     paginator = Paginator(listings, 6)
